@@ -10,7 +10,7 @@
 
 * 读了哪几篇
   * 0 Control of a Quadrotor with Reinforcement Learning
-  * 1 Flying through a narrow gap using neural network/ an end-to-end planning and control approach
+  * 1 Flying through a narrow gap using neural network: an end-to-end planning and control approach
   * 2 Flying Through a Narrow Gap Using End-to-end Deep Reinforcement Learning Augmented with Curriculu Learning and Sim2Real
 
 * 明白了
