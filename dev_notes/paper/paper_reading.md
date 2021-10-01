@@ -16,7 +16,7 @@
 
        > During policy optimization, we train it to go to the origin of the inertial frame, and the model is deployed to a real quadcopter.
        >
-       > We added a simple Proportional and Derivative (PD) con- troller for attitude with low gains along with our learning policy. The sum of the outputs of the two controllers are used as a command.
+       > We added a simple Proportional and Derivative (PD) controller for attitude with low gains along with our learning policy. The sum of the outputs of the two controllers are used as a command.
        >
        > The PD controller is used to stabilize the learning process but it does not aid the final controller.
 
@@ -98,7 +98,7 @@
 5. my comments
 
    * amazing idea
-   * training process should be studied in detail in the future, also look at RNN and transfer learning (refer to TODOs)
+   * training process should be studied in detail in the future, also look at RNN and transfer learning
 
 ## Flying through a narrow gap using neural network: an end-to-end planning and control approach (HKU & HKUST)
 
@@ -157,6 +157,13 @@
    * it seems that the major contribution is done by the RL process, cauz it is essentially optimization inside
    * maybe it is easier to tune params of the imitated network than designing a parameterized planning method and tuning it for a better result, and maybe better patterns can emerge from the network
 
+6. comments from **Flying Through a Narrow Gap Using End-to-end Deep Reinforcement Learning Augmented with Curriculum Learning and Sim2Real**
+
+   * the first known study that implemented gap traversing using reinforcement learning
+   * the initial trajectory being cloned is still obtained from the optimal control framework with excessive priors
+   * imitation learning may still end up with local optimal solutions that are similar to demonstrations without sufficient exploration
+   * not detached from optimal control that requires excessive priors
+
 ## Flying Through a Narrow Gap Using End-to-end Deep Reinforcement Learning Augmented with Curriculum Learning and Sim2Real (HKU & HKPU & PU)
 
 1. System overview and capability
@@ -167,21 +174,44 @@
 
      <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 10.51.21 PM.png" alt="Screen Shot 2021-09-30 at 10.51.21 PM" style="zoom:50%;" />
 
-     * PX4 is running in OFFBOARD mode, which receives the desired **position** and tracks it
+     * action is linear and angular acceleration, position contains both translational and rotational part
+     * sim2real calculates the position of next step and sends the position cmd to PX4 offboard mode
 
    * capability and performance
 
      * fly through a narrow tilted (20 deg) gap with a success rate related to the dimension of the gap
-     * narrow gap traverse is purely done with reinforcement learning + curriculum learning
+     * narrow gap traverse is purely done with reinforcement learning + curriculum learning, curriculum learning is incorporated to deal with the sparse reward problem
      * a sim2real method to ehance generalization of the policy without utilizing real-world data
 
-2. Network structure
+2. Network, action sampler & sim2real
 
-   <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 11.45.32 PM.png" alt="Screen Shot 2021-09-30 at 11.45.32 PM" style="zoom:50%;" />
+   * policy network & sampler
+
+     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 11.45.32 PM.png" alt="Screen Shot 2021-09-30 at 11.45.32 PM" style="zoom:50%;" />
+
+     * State: position err, linear velocity, roll and pitch, roll and pitch velocity
+     * output: linear and angular accel
+     * use reparameterization trick to sample actions
+
+   * sim2real converter
+
+     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 11.09.52 PM.png" alt="Screen Shot 2021-09-30 at 11.09.52 PM" style="zoom:50%;" />
+
+     * the policy network + action sampler + action scaler altogether output the desired linear and angular accel
+     * sim2real converter acts as a physical model (assumes uniform-accel motion)
 
 3. Training
+
+   * (TODO)
 
 4. Future work
 
    * extend our work to scenarios with larger tilted angles using a more dexterous quadrotor
    * feed the gap’s tilt angle to the network input, which can facilitate our proposed method to address varying tilting angles without the need to re-train the model
+
+5. my comments
+
+   * don't quite understand how the sim2real converter solves the **error tolerance** problem or the sim-real **model mismatch** problem mentioned in **Control of a Quadrotor with Reinforcement Learning (ETHZ)**
+   * has the same level of E2E implementation with the imitation approach, relies on a cascaded system to complete the whole task
+   * the major contribution is obtaining the "plan-control" network by learning and without excessive priors
+   * the "Training" part is a TODO (study RL before reading this part)
