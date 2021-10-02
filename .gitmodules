@@ -1,0 +1,3 @@
+[submodule "raisimLib"]
+	path = raisimLib
+	url = https://github.com/raisimTech/raisimLib.git
