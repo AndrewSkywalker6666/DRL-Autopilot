@@ -8,7 +8,7 @@
 
    * diagram
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 1.34.14 PM.png" alt="Screen Shot 2021-09-30 at 1.34.14 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 1.34.14 PM.png" alt="Screen Shot 2021-09-30 at 1.34.14 PM" style="zoom:50%;" />
 
    * capability and performance
 
@@ -24,7 +24,7 @@
 
        > During operation, we input the state subtracted by the waypoint location to the policy. This way we do not have to train waypoint tracking explicitly
 
-       <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 1.55.26 PM.png" alt="Screen Shot 2021-09-30 at 1.55.26 PM" style="zoom:50%;" />
+       <img src="./Screen Shot 2021-09-30 at 1.55.26 PM.png" alt="Screen Shot 2021-09-30 at 1.55.26 PM" style="zoom:50%;" />
 
      * tracking performance suffers from rotor dynamics, aerodynamics, battery level and external disturbances
 
@@ -43,7 +43,7 @@
 
    * diagram
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 1.32.44 PM.png" alt="Screen Shot 2021-09-30 at 1.32.44 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 1.32.44 PM.png" alt="Screen Shot 2021-09-30 at 1.32.44 PM" style="zoom:50%;" />
 
 3. Optimization/training
 
@@ -60,7 +60,7 @@
 
      * branch trajectories are on-policy trajectories starting from some state along the junction trajectories
 
-       <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 2.19.25 PM.png" alt="Screen Shot 2021-09-30 at 2.19.25 PM" style="zoom:50%;" />
+       <./Screen Shot 2021-09-30 at 2.19.25 PM.png" alt="Screen Shot 2021-09-30 at 2.19.25 PM" style="zoom:50%;" />
 
        > During exploration, we mostly follow the current policy(decision) to evaluate the value of the visited states. 
        >
@@ -106,7 +106,7 @@
 
    * diagram
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 9.06.48 PM.png" alt="Screen Shot 2021-09-30 at 9.06.48 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 9.06.48 PM.png" alt="Screen Shot 2021-09-30 at 9.06.48 PM" style="zoom:50%;" />
 
      * the network outputs the desired roll pitch and throttle which is then executed by FC
      * TYPO: "Leaning" should be "Learning"
@@ -124,13 +124,13 @@
 
    * planning network
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 9.39.05 PM.png" alt="Screen Shot 2021-09-30 at 9.39.05 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 9.39.05 PM.png" alt="Screen Shot 2021-09-30 at 9.39.05 PM" style="zoom:50%;" />
 
      > M. W. Mueller, M. Hehn, and R. D’Andrea, “**A computationally efficient motion primitive for quadrocopter trajectory generation**,” *IEEE Transactions on Robotics*, vol. 31, no. 6, pp. 1294–1310, 2015.
 
    * controller network
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 9.39.25 PM.png" alt="Screen Shot 2021-09-30 at 9.39.25 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 9.39.25 PM.png" alt="Screen Shot 2021-09-30 at 9.39.25 PM" style="zoom:50%;" />
 
      > D. Mellinger and V. Kumar, “**Minimum snap trajectory generation and control for quadrotors**,” in *Robotics and Automation (ICRA), 2011 IEEE International Conference on*. IEEE, 2011, pp. 2520–2525.
      >
@@ -170,9 +170,9 @@
 
    * diagram
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 10.39.07 PM.png" alt="Screen Shot 2021-09-30 at 10.39.07 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 10.39.07 PM.png" alt="Screen Shot 2021-09-30 at 10.39.07 PM" style="zoom:50%;" />
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 10.51.21 PM.png" alt="Screen Shot 2021-09-30 at 10.51.21 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 10.51.21 PM.png" alt="Screen Shot 2021-09-30 at 10.51.21 PM" style="zoom:50%;" />
 
      * action is linear and angular acceleration, position contains both translational and rotational part
      * sim2real calculates the position of next step and sends the position cmd to PX4 offboard mode
@@ -187,7 +187,7 @@
 
    * policy network & sampler
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 11.45.32 PM.png" alt="Screen Shot 2021-09-30 at 11.45.32 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 11.45.32 PM.png" alt="Screen Shot 2021-09-30 at 11.45.32 PM" style="zoom:50%;" />
 
      * State: position err, linear velocity, roll and pitch, roll and pitch velocity
      * output: linear and angular accel
@@ -195,7 +195,7 @@
 
    * sim2real converter
 
-     <img src="/Users/yueqian/Documents/DRL-Autopilot/dev_notes/paper/Screen Shot 2021-09-30 at 11.09.52 PM.png" alt="Screen Shot 2021-09-30 at 11.09.52 PM" style="zoom:50%;" />
+     <img src="./Screen Shot 2021-09-30 at 11.09.52 PM.png" alt="Screen Shot 2021-09-30 at 11.09.52 PM" style="zoom:50%;" />
 
      * the policy network + action sampler + action scaler altogether output the desired linear and angular accel
      * sim2real converter acts as a physical model (assumes uniform-accel motion)
