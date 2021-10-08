@@ -60,7 +60,7 @@
 
      * branch trajectories are on-policy trajectories starting from some state along the junction trajectories
 
-       <./Screen Shot 2021-09-30 at 2.19.25 PM.png" alt="Screen Shot 2021-09-30 at 2.19.25 PM" style="zoom:50%;" />
+       <img src="./Screen Shot 2021-09-30 at 2.19.25 PM.png" alt="Screen Shot 2021-09-30 at 2.19.25 PM" style="zoom:50%;" />
 
        > During exploration, we mostly follow the current policy(decision) to evaluate the value of the visited states. 
        >
@@ -94,6 +94,7 @@
    * introducing more accurate model of the system into the simulation
    * train RNN which can adapt to errors in modeling automatically
    * transfer learning on the real system can further improve the performance of the policy by capturing totally unknown dynamic aspects
+     * 如果用一句话来概括迁移学习, 那务必就是: 为了偷懒, 在训练好了的模型上接着训练其他内容, 充分使用原模型的理解力. 有时候也是为了避免再次花费特别长的时间重复训练大型模型.
 
 5. my comments
 
