@@ -1,3 +1,9 @@
 [submodule "PX4-Autopilot"]
 	path = PX4-Autopilot
 	url = https://github.com/ErcBunny/PX4-Autopilot.git
+[submodule "ros_workspace/src/mavros"]
+	path = ros_workspace/src/mavros
+	url = https://github.com/ErcBunny/mavros.git
+[submodule "ros_workspace/src/mavlink-gbp-release"]
+	path = ros_workspace/src/mavlink-gbp-release
+	url = https://github.com/ErcBunny/mavlink-gbp-release.git

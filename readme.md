@@ -1,27 +1,9 @@
-## sep26
+# Deep Reinforcement Learning Autopilot
 
-* 在做了在做了（新建文件夹
+## usage
 
-## sep27
+1. clone this repo recursively
 
-* 正在读dev_notes里面的相关paper
+2. build ros packages with `catkin build`, remember to source this workspace and launch mavros by `roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"`
 
-## oct1
-
-* 读了哪几篇
-  * 0 Control of a Quadrotor with Reinforcement Learning
-  * 1 Flying through a narrow gap using neural network: an end-to-end planning and control approach
-  * 2 Flying Through a Narrow Gap Using End-to-end Deep Reinforcement Learning Augmented with Curriculu Learning and Sim2Real
-
-* 明白了
-  * 实现的功能
-  * 性能参数
-  * 整体设计实现方案
-* 忽略了
-  * RL问题的设计
-  * 奖惩函数
-  * 网络的训练细节
-
-## oct8
-
-* 第一次汇报/讨论
+3. launch QGC and build PX4 by `make px4_sitl gazebo`
