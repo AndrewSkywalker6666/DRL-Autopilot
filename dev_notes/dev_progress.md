@@ -25,3 +25,26 @@
 ## oct8
 
 * 第一次汇报/讨论
+* 第一部分任务明细：在gazebo实现用DRL控制器的验证
+
+## oct12
+
+* 把px4和ros空间设置好了，用最新的稳定版
+
+* 分步骤走
+
+  1. 建立通讯
+
+      * FC->CC：需要px4的状态估计结果，已在mavros中原生有
+
+      * CC->FC：需要actuator cmd override，需要包括一个flag和四个值
+
+  2. 电机输出的MUX机制
+
+  3. frequencies
+
+  4. 思考怎么用gazebo
+
+* 建立CC到FC的通讯
+
+  1. 

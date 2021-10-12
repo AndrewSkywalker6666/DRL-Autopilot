@@ -3,3 +3,4 @@ ros_workspace/build
 ros_workspace/.catkin_tools
 ros_workspace/devel
 ros_workspace/logs
+.vscode
