@@ -1,6 +1,6 @@
 .DS_Store
-ros_workspace/build
-ros_workspace/.catkin_tools
-ros_workspace/devel
-ros_workspace/logs
+ros1_workspace/build
+ros1_workspace/.catkin_tools
+ros1_workspace/devel
+ros1_workspace/logs
 .vscode
