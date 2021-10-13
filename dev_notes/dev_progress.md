@@ -47,4 +47,4 @@
 
 * 建立CC到FC的通讯
 
-  1. 
+  1. 最终还是跳入了ros2的坑，https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html，教程见https://docs.ros.org/en/foxy/Tutorials.html
