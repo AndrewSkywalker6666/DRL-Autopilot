@@ -48,3 +48,12 @@
 * 建立CC到FC的通讯
 
   1. 最终还是跳入了ros2的坑，https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html，教程见https://docs.ros.org/en/foxy/Tutorials.html
+
+## oct14
+
+* 调通了ros2-px4的pipeline
+* 这样子自定义消息就不用管mavlink了，只需要uorb以及`msg/tools/`下的`yaml`就好了，修改了`yaml`文件之后需要拷贝到ros2那边并重新编译，见脚本。每次第一次编译总会出现`stderr`第二次就没问题，很迷
+* `micrortps_agent -t UDP`在ros那边重新编译了之后才会刷新
+* 接下来：
+  * 仿照example写sub和pub
+  * 把相关的教程读完，特别是offboard的例子，思考是否真的需要新建一个topic
