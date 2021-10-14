@@ -4,7 +4,7 @@
 
 1. ROOT
    1. master (ROS2)
-   2. master-ROS1 (for ROS1)
+   2. ROS1 (for ROS1)
    3. other dev branches (dynamically created and merged)
 2. PX4
    1. master: should be updated regularly to be consistent with upstream
