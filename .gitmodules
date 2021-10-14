@@ -9,7 +9,7 @@
 	url = https://github.com/ErcBunny/mavlink-gbp-release.git
 [submodule "ros2_workspace/src/px4_msgs"]
 	path = ros2_workspace/src/px4_msgs
-	url = https://github.com/PX4/px4_msgs.git
+	url = https://github.com/ErcBunny/px4_msgs.git
 [submodule "ros2_workspace/src/px4_ros_com"]
 	path = ros2_workspace/src/px4_ros_com
-	url = https://github.com/PX4/px4_ros_com.git
+	url = https://github.com/ErcBunny/px4_ros_com.git
