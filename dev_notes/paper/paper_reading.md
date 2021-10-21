@@ -2,7 +2,54 @@
 
 [TOC]
 
-## Control of a Quadrotor with Reinforcement Learning (ETHZ)
+---
+
+## Taxonomy & Comments
+
+* Surveys
+  *  [14 Review of drone control algorithms (OJAPPS).pdf](14 Review of drone control algorithms (OJAPPS).pdf) 
+  *  [20 UAV control survey (EAI).pdf](20 UAV control survey (EAI).pdf) 
+  *  [21 Drone DRL survey (electronics).pdf](21 Drone DRL survey (electronics).pdf)
+    * PID: essentially some kind of implicit planning and tracking, tracking performance isn't good, and the long pipeline of cascaded control is making this worse
+    * basic MPC: Optimal, flexible, good tracking; because there is always a feasible trajectory given, in this way, we have more control during the step process
+
+* For general purpose intelligent flight
+  * Plan & Track pipeline
+    * generation of a trajectory
+      *  [21 DRL traj Planning for drone racing (IROS).pdf](21 DRL traj Planning for drone racing (IROS).pdf) 
+      *  [21 Time-opt planning for drone racing (SR).pdf](21 Time-opt planning for drone racing (SR).pdf) 
+      *  [21 Whole-Body Planning (ICRA).pdf](21 Whole-Body Planning (ICRA).pdf) 
+      *  [21 RAPTOR (TOR).pdf](21 RAPTOR (TOR).pdf) (perception aware)
+    * tracking controller
+      * MPC family
+        *  [12 Learning based MPC (ICRA).pdf](12 Learning based MPC (ICRA).pdf) 
+        *  [21 Data driven MPC (RAL).pdf](21 Data driven MPC (RAL).pdf) 
+        *  [21 Adaptive NLMPC (Arxiv).pdf](21 Adaptive NLMPC (Arxiv).pdf) (maybe the best MPC so far)
+      * RL E2E controller
+        *  [17 Control of a Quadrotor with RL (RAL).pdf](17 Control of a Quadrotor with RL (RAL).pdf) 
+        *  [19 l2fly RL (ACM).pdf](19 l2fly RL (ACM).pdf) 
+        *  [20 RL control of tilt quads (DSCC).pdf](20 RL control of tilt quads (DSCC).pdf)
+        *  [20 Deep Drone Acrobatics (RSS).pdf](20 Deep Drone Acrobatics (RSS).pdf) 
+        *  [21 Low level RL Control (Sensors).pdf](21 Low level RL Control (Sensors).pdf) 
+      * Better tracking with responsive inner loop
+        *  [17 Traj tracking LQR body-rate control (RAL).pdf](17 Traj tracking LQR body-rate control (RAL).pdf) 
+  * Unified
+    *  [16 Unified planning and tracking NMPC(ICRA).pdf](16 Unified planning and tracking NMPC(ICRA).pdf) 
+    *  [21 MPCC drone racing (Arxiv).pdf](21 MPCC drone racing (Arxiv).pdf) 
+    *  [21 Learning highspeed flight (SR).pdf](21 Learning highspeed flight (SR).pdf)
+      * perception is involved
+      * significantly faster than traditional pipeline in terms of latency and calculation speed
+      * reduces processing latency and increases robustness to noisy and incomplete perception
+      * less compounding of errors through the pipeline
+* For a completing specific task
+  *  [18 Learning Target Following (IJCAI).pdf](18 Learning Target Following (IJCAI).pdf) 
+  *  [19 Narrow gap crossing with E2E network (IROS).pdf](19 Narrow gap crossing with E2E network (IROS).pdf) (this work is kind of a giant mixture)
+  *  [21 Narrow gap crossing DRL (TNNLS).pdf](21 Narrow gap crossing DRL (TNNLS).pdf) 
+* Relative work
+  *  [19 Sim2real of low level DL controllers (IROS).pdf](19 Sim2real of low level DL controllers (IROS).pdf) 
+  *  [21 Identity hybrid aerodynamic model (RSS).pdf](21 Identity hybrid aerodynamic model (RSS).pdf) 
+
+## 17 Control of a Quadrotor with RL (RAL)
 
 1. System overview and capability
 
@@ -101,7 +148,7 @@
    * amazing idea
    * training process should be studied in detail in the future, also look at RNN and transfer learning
 
-## Flying through a narrow gap using neural network: an end-to-end planning and control approach (HKU & HKUST)
+## 19 Narrow gap crossing with E2E network (IROS)
 
 1. System overview and capability
 
@@ -165,7 +212,7 @@
    * imitation learning may still end up with local optimal solutions that are similar to demonstrations without sufficient exploration
    * not detached from optimal control that requires excessive priors
 
-## Flying Through a Narrow Gap Using End-to-end Deep Reinforcement Learning Augmented with Curriculum Learning and Sim2Real (HKU & HKPU & PU)
+## 21 Narrow gap crossing DRL (TNNLS)
 
 1. System overview and capability
 
