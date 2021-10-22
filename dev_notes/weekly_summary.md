@@ -47,3 +47,13 @@
 
 4. 明确了DDL：虽然没定死但是建议ASAP
 
+## oct8-oct22
+
+1. 创建了工程文件夹
+   1. 开发日志，论文阅读，文献综述
+   2. PX4工程
+   3. ros1下面的mavros和mavlink
+   4. ros2下的msg和px4_com
+2. 实现了px4 PWM信号的覆盖逻辑
+3. 配置了ros2，把玩了一下rtsp系统
+4. 读了近年的一些文章，做了个Taxonomy(paper_reading.md)和LR(literature review.md)
