@@ -56,6 +56,51 @@
 
 1. install ros2: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
    1. addition tools https://docs.px4.io/master/en/ros/ros2_comm.html
+   
 2. use sdkman to install the correct version of gradle
+
 3. install fastrtpsgen from source: https://docs.px4.io/master/en/dev_setup/fast-dds-installation.html
+
 4. rerun the px4 setup script
+
+5. **important notice about PX4 and ros2 package versions**
+
+   1. PX4 should be on master branch instead on stable release branches
+      * master branch should have every commit history
+      * to avoid frequent changes, one possible way is to fix derive a development branch from the commit that is consistent to the latest stable release
+   2. px4_msgs is a repo for storing the same set of uorb msgs, should include custom msgs
+      * use uorb_to_ros_msgs.py to sync with uorb
+   3. px4_ros_com is for com, it depends on px4_msgs and `template/urtps_bridge_topics.yaml`
+      * use uorb_to_ros_urtps_topics.py to sync with uorb
+
+   > urtps_bridge_topics.yaml marks what msg to be communicated. if updated, run the ./generate_template_and_rebuild_ROS2.sh
+
+## ROS2 basics
+
+1. WS setup
+   1. clone into src
+   2. install dependencies at ws root `rosdep install -i --from-path src --rosdistro foxy -y`
+   3. `colcon build`
+      1. `--packages-up-to` builds the package you want, plus all its dependencies, but not the whole workspace (saves time)
+      2. `--symlink-install` saves you from having to rebuild every time you tweak python scripts
+      3. `--event-handlers console_direct+` shows console output while building (can otherwise be found in the `log` directory)
+      4. `colcon build --packages-select my_package` to save time even other pkgs are already built
+   4. source `install/setup.bash`
+   5. ament and colcon
+      1. ament is the build system
+      2. colcon is the build tool
+2. package
+   1. consist of
+      1. cmakelist
+      2. package.xml
+   2. creation: in src folder `ros2 pkg create --build-type ament_cmake --node-name ${NODE_NAME} ${PACKAGE_NAME}`
+   3. run: `ros2 run ${PACKAGE_NAME} ${NODE_NAME}`
+   4. dependencies
+      1. package.xml `<depend>`
+      2. cmakelist 
+         1. `find_package ament_target_dependencies`
+         2. `ament_target_dependencies`
+   5. executable and install in cmakelist so that ros2 run can find it
+
+
+

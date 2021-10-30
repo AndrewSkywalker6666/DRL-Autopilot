@@ -10,7 +10,7 @@
 2. PX4
    1. master: upstream
    2. DRL-Autopilot: ros1 based DRL method
-   3. DRL-Autopilot-ROS2: ros2 based, derived from master at the time of clone
+   3. DRL2-Autopilot: ros2 based, derived from master at the time of clone
    4. modified repos should be merged with future stable releases
 3. mavlink C library in PX4
    1. master: upstream
@@ -30,9 +30,8 @@
    3. launch QGC and build PX4 by `make px4_sitl gazebo`
 2. with ROS2
    1. clone the repo recursively, **checkout the correct branches**
-   2. build ros packages with the script `ros2_workspace/src/px4_ros_com/scripts/build_ros2_workspace.bash`, then source the script in the `install` directory
+   2. build ros packages with the script `buid_ros2_px4_clean.sh`
    3. launch QGC and build PX4 by `make px4_sitl_rtps gazebo`
-   4. `micrortps_agent -t UDP` to start daemon process
-   5. `ros2 launch px4_ros_com sensor_combined_listener.launch.py` (demo)
-
- 
+   4. `micrortps_agent -t UDP` to start daemon process (built within the px4_ros_com package)
+   5. `ros2 launch px4_ros_com sensor_combined_listener.launch.py` (demo) or use rqt to access topics
+   6. create other ros2 applications and use the topic
