@@ -10,3 +10,5 @@ ros2_workspace/build
 ros2_workspace/install
 ros2_workspace/devel
 ros2_workspace/log
+ros2_workspace/src/my_first_ros2_pkg
+ros2_workspace/src/ros_tutorials
