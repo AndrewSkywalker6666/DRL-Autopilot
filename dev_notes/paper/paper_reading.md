@@ -32,6 +32,7 @@
         *  [21 Low level RL Control (Sensors).pdf](21 Low level RL Control (Sensors).pdf) 
       * Better tracking with responsive inner loop
         *  [17 Traj tracking LQR body-rate control (RAL).pdf](17 Traj tracking LQR body-rate control (RAL).pdf) 
+        *   [19 DRL gazebo attitude controller.pdf](19 DRL gazebo attitude controller.pdf) 
   * Unified
     *  [16 Unified planning and tracking NMPC(ICRA).pdf](16 Unified planning and tracking NMPC(ICRA).pdf) 
     *  [18 PAMPC (IROS).pdf](18 PAMPC (IROS).pdf) 
@@ -50,6 +51,7 @@
 * Relative work
   *  [19 Sim2real of low level DL controllers (IROS).pdf](19 Sim2real of low level DL controllers (IROS).pdf) 
   *  [21 Identify hybrid aerodynamic model (RSS).pdf](21 Identify hybrid aerodynamic model (RSS).pdf) 
+  *   [21 smooth learned output.pdf](21 smooth learned output.pdf) 
 
 ## 17 Control of a Quadrotor with RL (RAL)
 

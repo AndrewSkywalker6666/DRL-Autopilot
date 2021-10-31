@@ -57,3 +57,23 @@
 * 接下来：
   * 仿照example写sub和pub
   * 把相关的教程读完，特别是offboard的例子，思考是否真的需要新建一个topic
+
+## oct30
+
+* 在master的stable release上重新调通了PX4-ROS2的通信，并且创建了一个controller的包，等待训练好的网络放进去
+
+## oct31
+
+* 和学长聊了一下，明确了用的算法和训练步骤
+
+  > 需要的数据是融合后的数据，使用的也是policy和value网络架构，但是用的是更新的RL算法，SAC，TD3，PPO，NN用的是tensorflow
+  >
+  > 目前是在gym框架下，以gazebo为仿真器做训练，每一个回合大致包括{以任意姿态把飞机丢进去，等待一段时间结束，更新参数}，回合间要重置模型位置，以及飞控系统的重置，因为需要ekf的融合
+  
+* 接下来做的东西
+
+  * 先把相关算法和gym看一遍儿
+  * 学一下范例代码
+  * 整合到自己的架构中（19年的那篇drl synthesis的phd学位论文可以看看有没有灵感）
+  * 想好训练的pipeline，开训
+  * 把tensorflow的网络放到drl-controller中
