@@ -42,4 +42,15 @@
    * about recent development progress and interesting paper related to this project
 2. `ros*_workspace`
    * ros workspaces as they are
-3. TODO
+3. `*.sh`
+   * useful lazy buttons
+4. `PX4-Autopilot`
+   * sensor, RC, PWM driver interface
+
+## TODOs
+
+1. learn to use ros2-python interface
+2. check motor speed consistency with PWM pipeline
+3. formulate the problem and construct gym env
+4. export the network to CPP
+5. write a trajectory generator from stick input
