@@ -49,7 +49,12 @@
 
 ## TODOs
 
-0. gazebo_ros_topic_bridge plugin
+0. plugins
+   * motor model (done) -> gazebo_ros_motor_model 
+      * [wind interference] `Philppe Martin, Erwan Salaün, The True Role of Accelerometer Feedback in Quadrotor Control, 2010 IEEE Conference on Robotics and Automation paper`
+      * [rolling moment] $- \omega * \mu_1 * V_A^{\perp}$
+   * precise joint vel control (done) -> gazebo_ros_joint_motor
+   * topic cannot be ending with `/[number only]` 
 1. learn to use ros2-python interface
    * good to go
 2. check motor speed consistency with PWM pipeline
@@ -97,7 +102,7 @@
    * conclusion on iris default sitl:
       * MIX_OUT=[-1, 1], PWM=[1000, 2000], ACTUATOR_CTRL=[0, 1], VEL_REF=[0, 1], VEL_REF={0, [100, 1100]}, REAL_VEL_REF=VEL_REF/10
       * VEL_REF = (PWM - 900)/10
-      * use the topic to set vel directly, no PID involved
+      * use ros topic to set VEL_REF directly
 3. formulate the problem and construct gym env
 4. export the network to CPP
 5. write a trajectory generator from stick input
