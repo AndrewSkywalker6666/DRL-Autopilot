@@ -15,11 +15,12 @@ setup(
     zip_safe=True,
     maintainer='yueqian',
     maintainer_email='yueqianliu@outlook.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='DRL training script',
+    license='BSD, Apache 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'main = training_room.main:main'
         ],
     },
 )
