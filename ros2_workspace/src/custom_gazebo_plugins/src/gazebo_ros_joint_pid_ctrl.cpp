@@ -62,7 +62,7 @@ namespace gazebo_plugins
     impl_->ros_node_ = gazebo_ros::Node::Get(sdf);
 
     // Get Qos profiles
-    const gazebo_ros::QoS & qos = impl_->ros_node_->get_qos();
+    const gazebo_ros::QoS &qos = impl_->ros_node_->get_qos();
 
     // check sdf file
     if (
@@ -82,7 +82,7 @@ namespace gazebo_plugins
     // store model and joint pointer as impl
     impl_->model_ = model;
     impl_->target_joint_ = model->GetJoint(sdf->Get<std::string>("joint_name"));
-    if(impl_->target_joint_ == nullptr)
+    if (impl_->target_joint_ == nullptr)
     {
       RCLCPP_ERROR(impl_->ros_node_->get_logger(), "Joint do not exist, joint pid control plugin not loaded");
       return;
