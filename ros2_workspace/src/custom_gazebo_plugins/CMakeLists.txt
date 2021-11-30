@@ -31,7 +31,7 @@ find_package(std_srvs REQUIRED)
 # link dir
 link_directories(${gazebo_dev_LIBRARY_DIRS})
 
-# gazebo_ros_joint_pid_ctrl plugin specific settings
+# gazebo_ros_joint_pid_ctrl START
 add_library(gazebo_ros_joint_pid_ctrl SHARED src/gazebo_ros_joint_pid_ctrl.cpp)
 target_include_directories(gazebo_ros_joint_pid_ctrl PUBLIC include)
 ament_target_dependencies(gazebo_ros_joint_pid_ctrl
@@ -41,6 +41,32 @@ ament_target_dependencies(gazebo_ros_joint_pid_ctrl
   "rclcpp"
 )
 ament_export_libraries(gazebo_ros_joint_pid_ctrl)
+# gazebo_ros_joint_pid_ctrl END
+
+# gazebo_ros_motor_model START
+add_library(gazebo_ros_motor_model SHARED src/gazebo_ros_motor_model.cpp)
+target_include_directories(gazebo_ros_motor_model PUBLIC include)
+ament_target_dependencies(gazebo_ros_motor_model
+  "gazebo_dev"
+  "gazebo_ros"
+  "std_msgs"
+  "rclcpp"
+)
+ament_export_libraries(gazebo_ros_motor_model)
+# gazebo_ros_motor_model END
+
+# gazebo_ros_joint_motor START
+add_library(gazebo_ros_joint_motor SHARED src/gazebo_ros_joint_motor.cpp)
+target_include_directories(gazebo_ros_joint_motor PUBLIC include)
+ament_target_dependencies(gazebo_ros_joint_motor
+        "gazebo_dev"
+        "gazebo_ros"
+        "std_msgs"
+        "rclcpp"
+        )
+ament_export_libraries(gazebo_ros_joint_motor)
+# gazebo_ros_joint_motor END
+
 
 ament_export_include_directories(include)
 ament_export_dependencies(rclcpp)
@@ -63,6 +89,7 @@ ament_package()
 
 install(TARGETS
     gazebo_ros_joint_pid_ctrl
+    gazebo_ros_motor_model
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
