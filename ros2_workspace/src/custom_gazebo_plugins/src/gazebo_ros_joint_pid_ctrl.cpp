@@ -108,7 +108,7 @@ namespace gazebo_plugins
 
     // subscribe to ros topic and register callback
     impl_->topic_ = sdf->Get<std::string>("ros_topic");
-    RCLCPP_INFO(impl_->ros_node_->get_logger(), "Listening to setpoint at [%s]", impl_->topic_.c_str());
+    RCLCPP_INFO(impl_->ros_node_->get_logger(), "Subscribing to setpoint at [%s]", impl_->topic_.c_str());
     if (impl_->ctrl_type_ == "velocity")
     {
       impl_->setpoint_sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float32>(
@@ -124,10 +124,6 @@ namespace gazebo_plugins
           std::bind(&GazeboRosJointPidCtrl::OnPosMsg, this, std::placeholders::_1));
     }
 
-    // Create a connection so the OnUpdate function is called at every simulation
-    // iteration. Remove this call, the connection and the callback if not needed.
-    impl_->update_connection_ = gazebo::event::Events::ConnectWorldUpdateBegin(
-        std::bind(&GazeboRosJointPidCtrl::OnUpdate, this));
   }
 
   void GazeboRosJointPidCtrl::OnVelMsg(std_msgs::msg::Float32::SharedPtr msg)
@@ -138,11 +134,6 @@ namespace gazebo_plugins
   void GazeboRosJointPidCtrl::OnPosMsg(std_msgs::msg::Float32::SharedPtr msg)
   {
     impl_->model_->GetJointController()->SetPositionTarget(impl_->target_joint_->GetScopedName(), msg->data);
-  }
-
-  void GazeboRosJointPidCtrl::OnUpdate()
-  {
-    // Do something every simulation iteration
   }
 
   // Register this plugin with the simulator

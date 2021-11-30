@@ -46,8 +46,6 @@ namespace gazebo_plugins
     void Load(gazebo::physics::ModelPtr model, sdf::ElementPtr sdf) override;
 
   protected:
-    /// Optional callback to be called at every simulation iteration.
-    virtual void OnUpdate();
 
     virtual void OnVelMsg(std_msgs::msg::Float32::SharedPtr msg);
 
