@@ -1,5 +1,6 @@
 .DS_Store
 .vscode
+.idea
 
 ros1_workspace/build
 ros1_workspace/.catkin_tools
@@ -15,3 +16,5 @@ ros2_workspace/src/ros_tutorials
 
 gymfc
 uav_rl_ref
+
+cmake-build-debug
