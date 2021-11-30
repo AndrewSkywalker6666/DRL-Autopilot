@@ -14,7 +14,7 @@
 
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/physics.hh>
-#include <custom_gazebo_plugins/gazebo_ros_joint_pid_ctrl.hpp>
+#include <gazebo_ros_joint_pid_ctrl.hpp>
 #include <gazebo_ros/node.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/float32.hpp>
