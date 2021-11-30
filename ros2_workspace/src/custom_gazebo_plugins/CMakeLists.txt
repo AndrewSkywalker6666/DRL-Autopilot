@@ -90,6 +90,7 @@ ament_package()
 install(TARGETS
     gazebo_ros_joint_pid_ctrl
     gazebo_ros_motor_model
+    gazebo_ros_joint_motor
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
