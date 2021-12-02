@@ -18,3 +18,4 @@ gymfc
 uav_rl_ref
 
 cmake-build-debug
+*.pyc
