@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from stable_baselines3 import SAC
-
+import training_room.gz_gym_env
 from std_msgs.msg import String
 
 
