@@ -16,6 +16,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// set velocity feature uses joint_->SetParam, physical force is inherently implemented
+// set position feature uses joint_->SetPosition, preserves velocity, teleport kinematics
+
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 #include <gazebo_ros_joint_motor.hpp>
@@ -36,8 +39,10 @@ namespace gazebo_plugins
 
         /// Node for ROS communication.
         gazebo_ros::Node::SharedPtr ros_node_;
-        std::string topic_;
-        rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr setpoint_sub_;
+        std::string vel_topic_;
+        std::string pos_topic_;
+        rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr vel_setpoint_sub_;
+        rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pos_setpoint_sub_;
 
         /// gazebo entities
         gazebo::physics::JointPtr joint_;
@@ -73,32 +78,46 @@ namespace gazebo_plugins
             return;
         }
 
-        impl_->topic_ = sdf->Get<std::string>("ros_topic");
+        impl_->vel_topic_ = sdf->Get<std::string>("ros_topic_vel");
         impl_->max_effort_ = sdf->Get<double>("max_effort");
+        impl_->pos_topic_ = sdf->Get<std::string>("ros_topic_pos");
 
         // The model pointer gives you direct access to the physics object,
         // for example:
-        RCLCPP_INFO(impl_->ros_node_->get_logger(), "Subscribing to setpoint at [%s]", impl_->topic_.c_str());
+        RCLCPP_INFO(impl_->ros_node_->get_logger(), "Subscribing to velocity setpoint at [%s]", impl_->vel_topic_.c_str());
+        RCLCPP_INFO(impl_->ros_node_->get_logger(), "Subscribing to position setpoint at [%s]", impl_->pos_topic_.c_str());
 
         // use joint motor feature
         impl_->vel_setpoint_ = 0;
         impl_->joint_->SetParam("fmax", 0, impl_->max_effort_);
         impl_->joint_->SetParam("vel", 0, impl_->vel_setpoint_);
+        impl_->joint_->SetPosition(0, 0, true);
 
         // setup callback
-        impl_->setpoint_sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float32>(
-            impl_->topic_,
-            qos.get_subscription_qos(impl_->topic_, rclcpp::SystemDefaultsQoS()),
-            std::bind(&GazeboRosJointMotor::OnRosMsg, this, std::placeholders::_1));
+        impl_->vel_setpoint_sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float32>(
+            impl_->vel_topic_,
+            qos.get_subscription_qos(impl_->vel_topic_, rclcpp::SystemDefaultsQoS()),
+            std::bind(&GazeboRosJointMotor::OnVelMsg, this, std::placeholders::_1));
+
+        impl_->pos_setpoint_sub_ = impl_->ros_node_->create_subscription<std_msgs::msg::Float32>(
+            impl_->pos_topic_,
+            qos.get_subscription_qos(impl_->pos_topic_, rclcpp::SystemDefaultsQoS()),
+            std::bind(&GazeboRosJointMotor::OnPosMsg, this, std::placeholders::_1));
+
 
         impl_->update_connection_ = gazebo::event::Events::ConnectWorldUpdateBegin(
             std::bind(&GazeboRosJointMotor::OnUpdate, this));
 
     }
 
-    void GazeboRosJointMotor::OnRosMsg(std_msgs::msg::Float32::SharedPtr msg)
+    void GazeboRosJointMotor::OnVelMsg(std_msgs::msg::Float32::SharedPtr msg)
     {
         impl_->vel_setpoint_ = msg->data;
+    }
+
+    void GazeboRosJointMotor::OnPosMsg(std_msgs::msg::Float32::SharedPtr msg)
+    {
+        impl_->joint_->SetPosition(0, msg->data, true);
     }
 
     void GazeboRosJointMotor::OnUpdate()

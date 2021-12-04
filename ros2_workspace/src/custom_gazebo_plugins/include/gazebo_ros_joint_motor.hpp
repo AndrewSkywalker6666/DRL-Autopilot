@@ -38,7 +38,8 @@ namespace gazebo_plugins
         void Load(gazebo::physics::ModelPtr model, sdf::ElementPtr sdf) override;
 
     protected:
-        virtual void OnRosMsg(std_msgs::msg::Float32::SharedPtr msg);
+        virtual void OnVelMsg(std_msgs::msg::Float32::SharedPtr msg);
+        virtual void OnPosMsg(std_msgs::msg::Float32::SharedPtr msg);
 
         virtual void OnUpdate();
 
