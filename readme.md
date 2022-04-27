@@ -6,6 +6,7 @@
 
 1. ROOT
    1. master (ROS2, **always switch px4 back to ROS2 branch before commiting**)
+   3. DRL-Autopilot: ROS1 branch
    3. other dev branches (dynamically created and merged)
 2. PX4
    1. master: upstream
